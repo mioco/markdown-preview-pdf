@@ -1,71 +1,48 @@
-# markdown-extension README
+# Markdown Preview with PDF Download
 
-This is the README for your extension "markdown-extension". After writing up a brief description, we recommend including the following sections.
+This VSCode extension adds a "Preview" button to the editor title when editing Markdown files. Upon clicking the "Preview" button, a webview will open displaying the rendered Markdown content. Additionally, while viewing the rendered Markdown, you can download the previewed content as a PDF file by clicking the "Download" button in the top right corner.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Preview Button**: A "Preview" button appears in the editor title bar when editing a Markdown file.
+- **Markdown Webview**: Clicking the "Preview" button opens a webview displaying the rendered Markdown.
+- **Download as PDF**: When viewing the Markdown preview, you can download the rendered content as a PDF file via the "Download" button in the top-right corner of the preview.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Open **VSCode**.
+2. Go to the **Extensions** view by clicking on the Extensions icon in the Activity Bar on the side of the window.
+3. Search for `Markdown Preview with PDF Download`.
+4. Click **Install**.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
 
-## Requirements
+1. Open a Markdown file in VSCode.
+2. Once the file is open, you'll see a **Preview** button in the editor's title bar.
+3. Click the **Preview** button to open a webview displaying the rendered Markdown.
+4. In the webview, you'll see a **Download** button in the top-right corner.
+5. Click the **Download** button to save the rendered Markdown as a PDF file to your local machine.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Key Commands
 
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- **Markdown Preview**: Open the preview for the current Markdown file (activated by the "Preview" button).
+- **Download PDF**: Download the current Markdown preview as a PDF (available in the preview view).
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- The **Download PDF** feature may not be available in all environments.
+- The extension currently supports only basic Markdown features for rendering.
 
-## Release Notes
+## Contributing
 
-Users appreciate release notes as you update your extension.
+Feel free to contribute! If you encounter any issues or have suggestions, please create an issue or submit a pull request.
 
-### 1.0.0
+1. Fork this repository.
+2. Clone your fork to your local machine.
+3. Create a branch for your changes.
+4. Make your changes and test them.
+5. Submit a pull request.
 
-Initial release of ...
+## License
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This extension is licensed under the MIT License.

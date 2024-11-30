@@ -1,7 +1,12 @@
 {
-  "name": "@resume-phobia/markdown-extension",
-  "displayName": "markdown-extension",
+  "name": "markdown-preview-pdf",
+  "displayName": "markdown-preview-pdf",
   "description": "Effortlessly preview markdown",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mioco/markdown-preview-pdf/tree/main/packages/vscode-extension"
+  },
+  "publisher": "osyo",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.94.0"
@@ -9,6 +14,7 @@
   "categories": [
     "Other"
   ],
+  "license": "MIT",
   "activationEvents": [],
   "main": "./dist/main.js",
   "contributes": {
@@ -31,7 +37,7 @@
     "commands": [
       {
         "command": "markdown-extension.preview",
-        "title": "Resume Phobia: Markdown Preview"
+        "title": "Markdown Preview"
       },
       {
         "command": "markdown-extension.download-pdf",
@@ -69,7 +75,9 @@
     "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "build:vsix": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
   },
   "devDependencies": {
     "@types/html-pdf": "^3.0.3",
@@ -81,6 +89,7 @@
     "@typescript-eslint/parser": "^8.7.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
+    "@vscode/vsce": "^3.2.1",
     "esbuild": "^0.24.0",
     "eslint": "^9.11.1",
     "npm-run-all": "^4.1.5",
@@ -88,7 +97,6 @@
   },
   "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228",
   "dependencies": {
-    "html-pdf": "^3.0.1",
     "marked": "^15.0.2",
     "puppeteer": "^23.9.0"
   }
