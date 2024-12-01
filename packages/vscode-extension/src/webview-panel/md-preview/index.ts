@@ -28,7 +28,7 @@ export class MarkdownViewer {
 
         const activeDispose = vscode.window.onDidChangeActiveTextEditor(() => {
             const panel = MarkdownViewer.panels.get(vscode.window.activeTextEditor?.document.uri.toString());
-            panel?.reveal();
+            panel?.reveal(void 0, true);
             this.activityPannel = panel;
         });
 

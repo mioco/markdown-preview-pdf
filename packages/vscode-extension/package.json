@@ -7,7 +7,7 @@
     "url": "https://github.com/mioco/markdown-preview-pdf/tree/main/packages/vscode-extension"
   },
   "publisher": "osyo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.94.0"
   },
@@ -26,7 +26,7 @@
           "group": "navigation"
         },
         {
-          "when": "activeWebviewPanelId == preview",
+          "when": "activeWebviewPanelId",
           "command": "markdown-extension.download-pdf",
           "group": "navigation"
         }
