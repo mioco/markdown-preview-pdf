@@ -1,54 +1,73 @@
 import * as vscode from 'vscode';
 import type { MarkdownService } from '../../services/markdown';
+import { parse } from 'path';
+import debounce from 'lodash/debounce';
 
 export class MarkdownViewer {
     static panels = new Map();
 
-    panel: vscode.WebviewPanel;
-
     context: vscode.ExtensionContext;
-
-    id: string;
 
     markdownService?: MarkdownService;
 
-    constructor({ id, context }: { id: string; context: vscode.ExtensionContext }) {
+    activityPannel?: vscode.WebviewPanel;
+
+    dispose: () => void;
+
+    constructor({ context }: { context: vscode.ExtensionContext }) {
         this.context = context;
-        this.id = id;
+
         this.markdownService = this.context.globalState.get<MarkdownService>('markdownService');
-        vscode.commands.executeCommand('setContext', 'view', id);
-        this.panel = MarkdownViewer.panels.get(id) ?? vscode.window.createWebviewPanel(id, 'Preview', vscode.ViewColumn.Beside, {
+
+        const downloadDispose = vscode.commands.registerCommand('markdown-extension.download-pdf', () => {
+            if (!this.activityPannel) {
+                return;
+            }
+            this.markdownService?.save(this.activityPannel.title, this.activityPannel.webview.html);
+        });
+
+        const activeDispose = vscode.window.onDidChangeActiveTextEditor(() => {
+            const panel = MarkdownViewer.panels.get(vscode.window.activeTextEditor?.document.uri.toString());
+            panel?.reveal();
+            this.activityPannel = panel;
+        });
+
+        const changeTextDispose = vscode.workspace.onDidChangeTextDocument(debounce(() => {
+            this.setHTML();
+        }));
+        this.context.subscriptions.push(changeTextDispose);
+
+        this.dispose = () => {
+            downloadDispose.dispose();
+            activeDispose.dispose();
+            changeTextDispose.dispose();
+        };
+    }
+
+    regist() {
+        const id = vscode.window.activeTextEditor?.document.uri.toString()!;
+        if (MarkdownViewer.panels.get(id)) {
+            return;
+        }
+        const title = parse(vscode.window.activeTextEditor?.document.uri.path!).name;
+        const panel = vscode.window.createWebviewPanel(id, title, vscode.ViewColumn.Beside, {
             enableScripts: true,
             retainContextWhenHidden: true,
         });
-        MarkdownViewer.panels.set(id, this.panel);
+        MarkdownViewer.panels.set(id, panel);
+        this.activityPannel = panel;
+        this.setHTML();
 
-        this._init();
-    }
-
-    private _init() {
-        this._getHTML();
-        this._listenTextChange();
-
-        const download = vscode.commands.registerCommand('markdown-extension.download-pdf', () => {
-            vscode.window.showInformationMessage('Custom Action Triggered!');
-            this.markdownService?.save(this.panel.title, this.panel.webview.html);
+        panel.onDidDispose(() => {
+            MarkdownViewer.panels.delete(id);
         });
-        this.panel.onDidDispose(() => {
-            MarkdownViewer.panels.delete(this.id);
-            vscode.commands.executeCommand('setContext', 'view', undefined);
-            download.dispose();
-        });
-        this.context.subscriptions.push(download);
     }
 
-    private async _getHTML() {
-        this.panel.webview.html = await this.markdownService?.getHTML() ?? '';
-    }
-
-    private _listenTextChange() {
-        this.context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(() => {
-            this._getHTML();
-        }));
+    setHTML() {
+        if (this.activityPannel) {
+            this.markdownService?.getHTML().then((html) => {
+                this.activityPannel!.webview.html = html;
+            });
+        }
     }
 }

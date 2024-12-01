@@ -7,7 +7,7 @@
     "url": "https://github.com/mioco/markdown-preview-pdf/tree/main/packages/vscode-extension"
   },
   "publisher": "osyo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.94.0"
   },
@@ -21,15 +21,13 @@
     "menus": {
       "editor/title": [
         {
-          "when": "resourceLangId == markdown",
+          "when": "editorFocus && editorLangId == markdown",
           "command": "markdown-extension.preview",
-          "alt": "Preview",
           "group": "navigation"
         },
         {
-          "when": "view == preview",
+          "when": "activeWebviewPanelId == preview",
           "command": "markdown-extension.download-pdf",
-          "alt": "Download",
           "group": "navigation"
         }
       ]
@@ -77,10 +75,11 @@
     "lint": "eslint src",
     "test": "vscode-test",
     "build:vsix": "vsce package --no-dependencies",
-    "publish": "vsce publish --no-dependencies"
+    "publish:vsix": "vsce publish --no-dependencies"
   },
   "devDependencies": {
     "@types/html-pdf": "^3.0.3",
+    "@types/lodash": "^4.17.13",
     "@types/mocha": "^10.0.8",
     "@types/node": "20.x",
     "@types/showdown": "^2.0.6",
@@ -92,6 +91,7 @@
     "@vscode/vsce": "^3.2.1",
     "esbuild": "^0.24.0",
     "eslint": "^9.11.1",
+    "lodash": "^4.17.21",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.6.2"
   },
