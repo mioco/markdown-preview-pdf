@@ -1,14 +1,22 @@
 import { parse } from "marked";
-import { Service } from "./common/service";
+import { Service } from "../common/service";
 import * as vscode from 'vscode';
-import * as fs from 'fs';
-import puppeteer from 'puppeteer';
+import puppeteer, { Browser, Page } from 'puppeteer';
 import type { ExtensionContext } from 'vscode';
 
 export class MarkdownService extends Service {
+    page?: Page;
+    browser?: Browser;
+
     constructor(context: ExtensionContext) {
-        super();
+        super(context);
         context.globalState.update('markdownService', this);
+        this.browserInit();
+    }
+
+    async browserInit() {
+        this.browser = await puppeteer.launch();
+        this.page = await this.browser.newPage();
     }
 
     async getHTML() {
@@ -29,12 +37,27 @@ export class MarkdownService extends Service {
             saveLabel: '保存 PDF 文件',
         });
         if (uri) {
-            const browser = await puppeteer.launch();
-            const page = await browser.newPage();
-            await page.setContent(content);
-            const pdfBuffer = await page.pdf();
-            vscode.workspace.fs.writeFile(uri, pdfBuffer);
-            await browser.close();
+            const pdfBuffer = await this.getPDF(content);
+            vscode.workspace.fs.writeFile(uri, pdfBuffer!);
         }
     };
+
+    async getPDF(content: string) {
+        const MARGIN = 12;
+        await this.page?.setContent(content);
+        const pdfBuffer = await this.page?.pdf({
+            format: 'A4',
+            margin: {
+                left: MARGIN,
+                bottom: MARGIN,
+                right: MARGIN,
+                top: MARGIN,
+            }
+        });
+        return pdfBuffer;
+    }
+
+    dispose(): void {
+        this.browser?.close();
+    }
 }

@@ -11,6 +11,12 @@ importers:
       marked:
         specifier: ^15.0.2
         version: 15.0.3
+      node-html-parser:
+        specifier: ^6.1.13
+        version: 6.1.13
+      pdfjs-dist:
+        specifier: ^4.9.155
+        version: 4.9.155
       puppeteer:
         specifier: ^23.9.0
         version: 23.9.0(typescript@5.7.2)
@@ -336,6 +342,70 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@napi-rs/canvas-android-arm64@0.1.65':
+    resolution: {integrity: sha512-ZYwqFYEKcT5Zr8lbiaJNJj/poLaeK2TncolY914r+gD2TJNeP7ZqvE7A2SX/1C9MB4E3DQEwm3YhL3WEf0x3MQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [android]
+
+  '@napi-rs/canvas-darwin-arm64@0.1.65':
+    resolution: {integrity: sha512-Pg1pfiJEyDIsX+V0QaJPRWvXbw5zmWAk3bivFCvt/5pwZb37/sT6E/RqPHT9NnqpDyKW6SriwY9ypjljysUA1Q==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@napi-rs/canvas-darwin-x64@0.1.65':
+    resolution: {integrity: sha512-3Tr+/HjdJN7Z/VKIcsxV2DvDIibZCExgfYTgljCkUSFuoI7iNkOE6Dc1Q6j212EB9PeO8KmfrViBqHYT6IwWkA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@napi-rs/canvas-linux-arm-gnueabihf@0.1.65':
+    resolution: {integrity: sha512-3KP+dYObH7CVkZMZWwk1WX9jRjL+EKdQtD43H8MOI+illf+dwqLlecdQ4d9bQRIxELKJ8dyPWY4fOp/Ngufrdg==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+
+  '@napi-rs/canvas-linux-arm64-gnu@0.1.65':
+    resolution: {integrity: sha512-Ka3StKz7Dq7kjTF3nNJCq43UN/VlANS7qGE3dWkn1d+tQNsCRy/wRmyt1TUFzIjRqcTFMQNRbgYq84+53UBA0A==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@napi-rs/canvas-linux-arm64-musl@0.1.65':
+    resolution: {integrity: sha512-O4xMASm2JrmqYoiDyxVWi+z5C14H+oVEag2rZ5iIA67dhWqYZB+iO7wCFpBYRj31JPBR29FOsu6X9zL+DwBFdw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+
+  '@napi-rs/canvas-linux-riscv64-gnu@0.1.65':
+    resolution: {integrity: sha512-dblWDaA59ZU8bPbkfM+riSke7sFbNZ70LEevUdI5rgiFEUzYUQlU34gSBzemTACj5rCWt1BYeu0GfkLSjNMBSw==}
+    engines: {node: '>= 10'}
+    cpu: [riscv64]
+    os: [linux]
+
+  '@napi-rs/canvas-linux-x64-gnu@0.1.65':
+    resolution: {integrity: sha512-wsp+atutw13OJXGU3DDkdngtBDoEg01IuK5xMe0L6VFPV8maGkh17CXze078OD5QJOc6kFyw3DDscMLOPF8+oA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@napi-rs/canvas-linux-x64-musl@0.1.65':
+    resolution: {integrity: sha512-odX+nN+IozWzhdj31INcHz3Iy9+EckNw+VqsZcaUxZOTu7/3FmktRNI6aC1qe5minZNv1m05YOS1FVf7fvmjlA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+
+  '@napi-rs/canvas-win32-x64-msvc@0.1.65':
+    resolution: {integrity: sha512-RZQX3luWnlNWgdMnLMQ1hyfQraeAn9lnxWWVCHuUM4tAWEV8UDdeb7cMwmJW7eyt8kAosmjeHt3cylQMHOxGFg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@napi-rs/canvas@0.1.65':
+    resolution: {integrity: sha512-YcFhXQcp+b2d38zFOJNbpyPHnIL7KAEkhJQ+UeeKI5IpE9B8Cpf/M6RiHPQXSsSqnYbrfFylnW49dyh2oeSblQ==}
+    engines: {node: '>= 10'}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1642,6 +1712,9 @@ packages:
   node-addon-api@4.3.0:
     resolution: {integrity: sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==}
 
+  node-html-parser@6.1.13:
+    resolution: {integrity: sha512-qIsTMOY4C/dAa5Q5vsobRpOOvPfC4pB61UVW2uSwZNUp0QU/jCekTal1vMmbO0DgdHeLUJpv/ARmDqErVxA3Sg==}
+
   normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
 
@@ -1764,6 +1837,10 @@ packages:
   path-type@3.0.0:
     resolution: {integrity: sha512-T2ZUsdZFHgA3u4e5PfPbjd7HDDpxPnQb5jN0SrDsjNSuVXHJqtwTnWqG0B1jZrgmJ/7lj1EmVIByWt1gxGkWvg==}
     engines: {node: '>=4'}
+
+  pdfjs-dist@4.9.155:
+    resolution: {integrity: sha512-epRZn6DQQKCOEqbmFsxkiMBm1MHaNrnr6T4VBNP0bsDvdJdmrWcZbS5cgJXW68P0d3uJTlFhF6Wms2tlSgPYig==}
+    engines: {node: '>=20'}
 
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
@@ -2565,6 +2642,50 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  '@napi-rs/canvas-android-arm64@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-darwin-arm64@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-darwin-x64@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-linux-arm-gnueabihf@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-linux-arm64-gnu@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-linux-arm64-musl@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-linux-riscv64-gnu@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-linux-x64-gnu@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-linux-x64-musl@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas-win32-x64-msvc@0.1.65':
+    optional: true
+
+  '@napi-rs/canvas@0.1.65':
+    optionalDependencies:
+      '@napi-rs/canvas-android-arm64': 0.1.65
+      '@napi-rs/canvas-darwin-arm64': 0.1.65
+      '@napi-rs/canvas-darwin-x64': 0.1.65
+      '@napi-rs/canvas-linux-arm-gnueabihf': 0.1.65
+      '@napi-rs/canvas-linux-arm64-gnu': 0.1.65
+      '@napi-rs/canvas-linux-arm64-musl': 0.1.65
+      '@napi-rs/canvas-linux-riscv64-gnu': 0.1.65
+      '@napi-rs/canvas-linux-x64-gnu': 0.1.65
+      '@napi-rs/canvas-linux-x64-musl': 0.1.65
+      '@napi-rs/canvas-win32-x64-msvc': 0.1.65
+    optional: true
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -4085,6 +4206,11 @@ snapshots:
   node-addon-api@4.3.0:
     optional: true
 
+  node-html-parser@6.1.13:
+    dependencies:
+      css-select: 5.1.0
+      he: 1.2.0
+
   normalize-package-data@2.5.0:
     dependencies:
       hosted-git-info: 2.8.9
@@ -4242,6 +4368,10 @@ snapshots:
   path-type@3.0.0:
     dependencies:
       pify: 3.0.0
+
+  pdfjs-dist@4.9.155:
+    optionalDependencies:
+      '@napi-rs/canvas': 0.1.65
 
   pend@1.2.0: {}
 

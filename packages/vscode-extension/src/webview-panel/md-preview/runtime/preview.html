@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3, user-scalable=yes">
+    <link rel="preload" href="https://unpkg.com/pdfjs-dist@4.9.155/build/pdf.worker.min.mjs" as="script"/>
+    <title>Document</title>
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+
+        dialog-box {
+            width: 80vw;
+            min-height: 80vh;
+            position: relative;
+            box-shadow: 4px 4px 10px #00000024;
+            margin: auto;
+        }
+
+        dialog-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(196, 196, 196);
+            display: none; /* 默认不显示 */
+            overflow-y: auto;
+        }
+    </style>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-light.min.css"
+        integrity="sha512-X175XRJAO6PHAUi8AA7GP8uUF5Wiv+w9bOi64i02CHKDQBsO1yy0jLSKaUKg/NhRCDYBmOLQCfKaTaXiyZlLrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <article id="content" class="markdown-body"></article>
+    </article>
+    <dialog-mask id="dialog-mask">
+        <dialog-box>
+        </dialog-box>
+    </dialog-mask>
+    <script src="https://unpkg.com/pdfjs-dist@4.9.155/build/pdf.min.mjs" type="module"></script>
+    <script src="@script@" type="module"></script>
+</body>
+
+</html>

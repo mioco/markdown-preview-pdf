@@ -24,10 +24,21 @@ const esbuildProblemMatcherPlugin = {
 };
 
 async function main() {
+	const runtime = await esbuild.context({
+		entryPoints: [
+			'src/webview-panel/md-preview/runtime/runtime.ts',
+		],
+		format: 'iife',
+		bundle: true,
+		sourcemap: false,
+		logLevel: 'silent',
+		outdir: 'dist',
+		assetNames: '[name]',
+	});
 	const ctx = await esbuild.context({
 		entryPoints: [
 			'src/main.ts',
-			'src/services/markdown.ts',
+			'src/services/markdown/index.ts',
 		],
 		bundle: true,
 		format: 'cjs',
@@ -36,7 +47,7 @@ async function main() {
 		sourcesContent: false,
 		platform: 'node',
 		outdir: 'dist',
-		external: ['vscode', '@resume-phobia/md-service'],
+		external: ['vscode'],
 		logLevel: 'silent',
 		plugins: [
 			/* add to the end of plugins array */
@@ -44,15 +55,15 @@ async function main() {
 		],
 		loader: {
 			'.node': 'file',
-			'.html': 'file',
+			'.html': 'text',
 		},
 		assetNames: '[name]',
 	});
 	if (watch) {
-		await ctx.watch();
+		await Promise.all([ctx.watch()], runtime.watch());
 	} else {
-		await ctx.rebuild();
-		await ctx.dispose();
+		await Promise.all([ctx.rebuild(), runtime.rebuild()]);
+		await Promise.all([ctx.dispose(), runtime.dispose()]);
 	}
 }
 
